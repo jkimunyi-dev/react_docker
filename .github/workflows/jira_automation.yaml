@@ -30,11 +30,10 @@ jobs:
 
       - name: Update Jira
         run: |
-          curl -D- \
+          curl -D- -u jimmy@alluvium.net:${{ secrets.JIRA_API_TOKEN }} \
           -X POST \
           --data '{"body": "Deployment successful"}' \
           -H "Content-Type: application/json" \
-          -H "Authorization: Basic amltbXlAYWxsdXZpdW0ubmV0OllPVVJfQVBJX1RPS0VO" \
           https://jimmykimunyi1.atlassian.net/rest/api/2/issue/SCRUM-1/comment
         env:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
